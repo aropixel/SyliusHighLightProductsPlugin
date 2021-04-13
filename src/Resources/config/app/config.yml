@@ -1,0 +1,13 @@
+stof_doctrine_extensions:
+  default_locale: fr_FR
+  orm:
+    default:
+      timestampable: true
+
+
+sylius_resource:
+  resources:
+    aropixel.highlight_products:
+      driver: doctrine/orm
+      classes:
+        model: Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProducts
