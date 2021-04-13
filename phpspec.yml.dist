@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: Aropixel\SyliusHighLightProductsPlugin
+        psr4_prefix: Aropixel\SyliusHighLightProductsPlugin

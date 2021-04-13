@@ -1,0 +1,9 @@
+aropixel_sylius_highlight_products_shop:
+    resource: "@AropixelSyliusHighLightProductsPlugin/Resources/config/shop_routing.yml"
+    prefix: /{_locale}
+    requirements:
+        _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
+
+aropixel_sylius_highlight_products_admin:
+    resource: "@AropixelSyliusHighLightProductsPlugin/Resources/config/admin_routing.yml"
+    prefix: /admin
