@@ -1,0 +1,7 @@
+aropixel:
+  ui:
+    highlight_products.title: Titre
+    highlight_products: Mise en avant de produits
+    new_highlight_products: Nouvelle mise en avant produits
+    edit_highlight_products: Modifier la mise en avant produits
+

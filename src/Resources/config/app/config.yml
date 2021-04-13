@@ -11,3 +11,32 @@ sylius_resource:
       driver: doctrine/orm
       classes:
         model: Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProducts
+
+sylius_grid:
+  grids:
+    aropixel_admin_highlight_products:
+      driver:
+        name: doctrine/orm
+        options:
+          class: Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProducts
+      fields:
+        title:
+          type: string
+          label: aropixel.highlight_products.title
+        code:
+          type: string
+          label: aropixel.highlight_products.code
+        enabled:
+          type: twig
+          label: sylius.ui.enabled
+          options:
+            template: "@SyliusUi/Grid/Field/enabled.html.twig"
+      actions:
+        main:
+          create:
+            type: create
+        item:
+          update:
+            type: update
+          delete:
+            type: delete
