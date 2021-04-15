@@ -3,9 +3,8 @@
 
 namespace Aropixel\SyliusHighLightProductsPlugin\Repository;
 
-
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 class HighLightProductRepository extends ServiceEntityRepository implements HighLightProductRepositoryInterface
 {
