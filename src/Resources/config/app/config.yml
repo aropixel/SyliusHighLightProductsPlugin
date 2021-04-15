@@ -11,6 +11,8 @@ sylius_resource:
       driver: doctrine/orm
       classes:
         model: Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProducts
+        form: Aropixel\SyliusHighLightProductsPlugin\Form\Type\HighLightProductsType
+        repository: Aropixel\SyliusHighLightProductsPlugin\Repository\HighLightProductRepository
 
 sylius_grid:
   grids:

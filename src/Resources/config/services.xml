@@ -3,5 +3,31 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
 
+        <service id="aropixel_sylius_high_light_products_plugin.menu.listener.admin.menu_builder" class="Aropixel\SyliusHighLightProductsPlugin\Menu\AdminMenuListener">
+            <tag name="kernel.event_listener" event="sylius.menu.admin.main" method="addAdminMenuItems"/>
+        </service>
+
+        <service id="aropixel_sylius_high_light_products_plugin.form.type.high_light_products" class="Aropixel\SyliusHighLightProductsPlugin\Form\Type\HighLightProductsType">
+            <argument>%aropixel.model.highlight_products.class%</argument>
+            <tag name="form.type"/>
+        </service>
+
+        <service id="aropixel_sylius_high_light_products_plugin.repository.high_light_products" class="Aropixel\SyliusHighLightProductsPlugin\Repository\HighLightProductRepository">
+            <argument type="service" id="doctrine"/>
+            <argument>%aropixel.model.highlight_products.class%</argument>
+        </service>
+
+        <service id="Aropixel\SyliusHighLightProductsPlugin\Controller\HighLightProductsController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface"/>
+            </call>
+            <tag name="container.service_subscriber"/>
+            <argument type="service" id="aropixel_sylius_high_light_products_plugin.repository.high_light_products" />
+        </service>
+
+        <service id="aropixel_sylius_high_light_products_plugin.controller.high_light_products" public="true" alias="Aropixel\SyliusHighLightProductsPlugin\Controller\HighLightProductsController" />
+
     </services>
 </container>
+
+

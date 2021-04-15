@@ -4,12 +4,13 @@
 namespace Aropixel\SyliusHighLightProductsPlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-class HighLightProducts implements ResourceInterface, CodeAwareInterface
+class HighLightProducts implements ResourceInterface, CodeAwareInterface, HighLightProductsInterface
 {
-
     private $id;
 
     private $code;
@@ -20,11 +21,11 @@ class HighLightProducts implements ResourceInterface, CodeAwareInterface
 
     private $enabled;
 
-    private $productVariants;
+    private $products;
 
     public function __construct()
     {
-        $this->productVariants = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,6 +91,30 @@ class HighLightProducts implements ResourceInterface, CodeAwareInterface
     public function setCode(?string $code): void
     {
         $this->code = $code;
+    }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        $this->products->removeElement($product);
+
+        return $this;
     }
 
 }

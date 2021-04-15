@@ -1,0 +1,14 @@
+aropixel_admin_highlight_products:
+  resource: |
+    alias: aropixel.highlight_products
+    section: admin
+    path: highlight-products
+    templates: "@SyliusAdmin\\Crud"
+    redirect: update
+    grid: aropixel_admin_highlight_products
+    vars:
+        all:
+            subheader: aropixel.ui.highlight_products
+        index:
+            icon: 'file image outline'
+  type: sylius.resource
