@@ -1,12 +1,16 @@
 <section>
 
-    <h3>{{ highLightProductsBloc.title }}</h3>
+    <h3>{{ highLightProductsBlock.title }}</h3>
 
-    {% for product in highLightProductsBloc.products %}
+    {% for product in highLightProductsBlock.products %}
 
         <article>
             {% include '@SyliusShop/Product/_mainImage.html.twig' with {'product': product} %}
             <a href="{{ path('sylius_shop_product_show', {'slug': product.slug, '_locale': product.translation.locale}) }}">{{ product.name }}</a>
         </article>
     {% endfor %}
+
+    {% if highLightProductsBlock.buttonLink %}
+        <a href="{{ highLightProductsBlock.buttonLink }}">{{ highLightProductsBlock.buttonText }}</a>
+    {% endif %}
 </section>

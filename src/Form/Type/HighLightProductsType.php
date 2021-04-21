@@ -25,6 +25,18 @@ class HighLightProductsType extends AbstractResourceType
                 'label' => 'sylius.ui.title'
             ])
 
+            ->add('buttonText', TextType::class, [
+                'label' => 'aropixel.ui.button_text'
+            ])
+
+            ->add('buttonLink', TextType::class, [
+                'label' => 'aropixel.ui.button_link'
+            ])
+
+            ->add('title', TextType::class, [
+                'label' => 'sylius.ui.title'
+            ])
+
             ->add('products', ProductAutocompleteChoiceType::class, [
                 'label' => 'sylius.ui.products',
                 'multiple' => true,

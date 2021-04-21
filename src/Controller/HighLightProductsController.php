@@ -22,13 +22,13 @@ class HighLightProductsController extends AbstractController
 
     public function displayHighLightProductsByCode($code): Response
     {
-        $highLightProductsBloc = $this->highLightProductRepository->findOneBy([
+        $highLightProductsBlock = $this->highLightProductRepository->findOneBy([
             'code' => $code,
             'enabled' => true
         ]);
 
         return $this->render('@AropixelSyliusHighLightProductsPlugin/Front/HighLightProducts/displayBlock.html.twig', [
-            'highLightProductsBloc' => $highLightProductsBloc
+            'highLightProductsBlock' => $highLightProductsBlock
         ]);
     }
 

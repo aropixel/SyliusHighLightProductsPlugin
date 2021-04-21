@@ -4,4 +4,9 @@ aropixel:
     highlight_products: Mise en avant de produits
     new_highlight_products: Nouvelle mise en avant produits
     edit_highlight_products: Modifier la mise en avant produits
+    button_text: Texte du bouton
+    button_link: Lien du bouton
 
+  highlight_products:
+    title: Titre
+    code: Code

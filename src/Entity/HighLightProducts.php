@@ -17,6 +17,10 @@ class HighLightProducts implements ResourceInterface, CodeAwareInterface, HighLi
 
     private $title;
 
+    private $buttonText;
+
+    private $buttonLink;
+
     private $createdAt;
 
     private $enabled;
@@ -115,6 +119,38 @@ class HighLightProducts implements ResourceInterface, CodeAwareInterface, HighLi
         $this->products->removeElement($product);
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getButtonText()
+    {
+        return $this->buttonText;
+    }
+
+    /**
+     * @param mixed $buttonText
+     */
+    public function setButtonText($buttonText): void
+    {
+        $this->buttonText = $buttonText;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getButtonLink()
+    {
+        return $this->buttonLink;
+    }
+
+    /**
+     * @param mixed $buttonLink
+     */
+    public function setButtonLink($buttonLink): void
+    {
+        $this->buttonLink = $buttonLink;
     }
 
 }
