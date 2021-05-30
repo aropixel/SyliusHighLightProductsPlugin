@@ -9,7 +9,7 @@ use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-class HighLightProducts implements ResourceInterface, CodeAwareInterface, HighLightProductsInterface
+class HighLight implements ResourceInterface, CodeAwareInterface, HighLightInterface
 {
     private $id;
 
@@ -25,11 +25,12 @@ class HighLightProducts implements ResourceInterface, CodeAwareInterface, HighLi
 
     private $enabled;
 
-    private $products;
+    /** @var ArrayCollection|HighLightProductInterface[]  */
+    private $highLightProducts;
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->highLightProducts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -102,21 +103,34 @@ class HighLightProducts implements ResourceInterface, CodeAwareInterface, HighLi
      */
     public function getProducts(): Collection
     {
-        return $this->products;
+        $products = new ArrayCollection();
+        foreach ($this->highLightProducts as $highLightProduct) {
+            $products->add($highLightProduct->getProduct());
+        }
+
+        return $products;
     }
 
-    public function addProduct(Product $product): self
+    /**
+     * @return Collection|HighLightProduct[]
+     */
+    public function getHighLightProducts(): Collection
     {
-        if (!$this->products->contains($product)) {
-            $this->products[] = $product;
+        return $this->highLightProducts;
+    }
+
+    public function addHighLightProduct(HighLightProduct $highLightProduct): self
+    {
+        if (!$this->highLightProducts->contains($highLightProduct)) {
+            $this->highLightProducts[] = $highLightProduct;
         }
 
         return $this;
     }
 
-    public function removeProduct(Product $product): self
+    public function removeHighLightProduct(HighLightProduct $highLightProduct): self
     {
-        $this->products->removeElement($product);
+        $this->highLightProducts->removeElement($highLightProduct);
 
         return $this;
     }

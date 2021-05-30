@@ -3,7 +3,7 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
 
-    <mapped-superclass name="Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProducts" table="aropixel_highlight_products">
+    <mapped-superclass name="Aropixel\SyliusHighLightProductsPlugin\Entity\HighLight" table="aropixel_highlight">
 
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
@@ -23,16 +23,14 @@
             <gedmo:timestampable on="create"/>
         </field>
 
-        <many-to-many field="products" target-entity="Sylius\Component\Core\Model\ProductInterface">
-            <join-table name="highlight_products_product">
-                <join-columns>
-                    <join-column name="highlight_products" referenced-column-name="id"/>
-                </join-columns>
-                <inverse-join-columns>
-                    <join-column name="product" referenced-column-name="id"/>
-                </inverse-join-columns>
-            </join-table>
-        </many-to-many>
+        <one-to-many field="highLightProducts" target-entity="Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProductInterface" mapped-by="highLight">
+            <order-by>
+                <order-by-field name="position" />
+            </order-by>
+            <cascade>
+                <cascade-all />
+            </cascade>
+        </one-to-many>
 
     </mapped-superclass>
 

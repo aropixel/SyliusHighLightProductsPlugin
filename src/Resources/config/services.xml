@@ -7,14 +7,14 @@
             <tag name="kernel.event_listener" event="sylius.menu.admin.main" method="addAdminMenuItems"/>
         </service>
 
-        <service id="aropixel_sylius_high_light_products_plugin.form.type.high_light_products" class="Aropixel\SyliusHighLightProductsPlugin\Form\Type\HighLightProductsType">
-            <argument>%aropixel.model.highlight_products.class%</argument>
+        <service id="aropixel_sylius_high_light_products_plugin.form.type.high_light_products" class="Aropixel\SyliusHighLightProductsPlugin\Form\Type\HighLightType">
+            <argument>%aropixel.model.highlight.class%</argument>
             <tag name="form.type"/>
         </service>
 
         <service id="aropixel_sylius_high_light_products_plugin.repository.high_light_products" class="Aropixel\SyliusHighLightProductsPlugin\Repository\HighLightProductRepository">
             <argument type="service" id="doctrine"/>
-            <argument>%aropixel.model.highlight_products.class%</argument>
+            <argument>%aropixel.model.highlight.class%</argument>
         </service>
 
         <service id="Aropixel\SyliusHighLightProductsPlugin\Controller\HighLightProductsController" public="true">

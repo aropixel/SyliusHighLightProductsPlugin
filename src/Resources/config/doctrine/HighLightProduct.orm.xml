@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
+
+    <mapped-superclass name="Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProduct" table="aropixel_highlight_product">
+
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <many-to-one field="highLight" target-entity="Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightInterface">
+            <join-column name="highlight_id" referenced-column-name="id" nullable="true" />
+        </many-to-one>
+
+        <many-to-one field="product" target-entity="Sylius\Component\Product\Model\ProductInterface">
+            <join-column name="product_id" referenced-column-name="id" nullable="true" />
+        </many-to-one>
+
+        <field name="position" type="smallint">
+            <gedmo:sortable-position/>
+        </field>
+
+        <unique-constraints>
+            <unique-constraint columns="highlight_id,product_id" />
+        </unique-constraints>
+
+    </mapped-superclass>
+
+</doctrine-mapping>

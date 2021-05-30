@@ -1,6 +1,6 @@
-aropixel_admin_highlight_products:
+aropixel_admin_highlight:
   resource: |
-    alias: aropixel.highlight_products
+    alias: aropixel.highlight
     section: admin
     path: highlight-products
     templates: "@SyliusAdmin\\Crud"

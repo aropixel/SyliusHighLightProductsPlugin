@@ -7,11 +7,18 @@ stof_doctrine_extensions:
 
 sylius_resource:
   resources:
-    aropixel.highlight_products:
+    aropixel.highlight:
       driver: doctrine/orm
       classes:
-        model: Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProducts
-        form: Aropixel\SyliusHighLightProductsPlugin\Form\Type\HighLightProductsType
+        model: Aropixel\SyliusHighLightProductsPlugin\Entity\HighLight
+        interface: Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightInterface
+        form: Aropixel\SyliusHighLightProductsPlugin\Form\Type\HighLightType
+    aropixel.highlight_product:
+      driver: doctrine/orm
+      classes:
+        model: Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProduct
+        interface: Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProductInterface
+        form: Aropixel\SyliusHighLightProductsPlugin\Form\Type\HighLightProductType
 
 sylius_grid:
   grids:
@@ -19,7 +26,7 @@ sylius_grid:
       driver:
         name: doctrine/orm
         options:
-          class: Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProducts
+          class: Aropixel\SyliusHighLightProductsPlugin\Entity\HighLight
       fields:
         title:
           type: string

@@ -4,7 +4,7 @@
 namespace Aropixel\SyliusHighLightProductsPlugin\Entity;
 
 
-interface HighLightProductsInterface
+interface HighLightInterface
 {
 
 }
