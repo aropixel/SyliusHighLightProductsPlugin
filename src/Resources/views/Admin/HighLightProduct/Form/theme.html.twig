@@ -1,0 +1,69 @@
+{% extends '@SyliusUi/Form/theme.html.twig' %}
+
+{% block collection_widget -%}
+  {% from '@SyliusResource/Macros/notification.html.twig' import error %}
+  {% import _self as self %}
+  {% set attr = attr|merge({'class': attr.class|default ~ ' controls collection-widget'}) %}
+
+  {% apply spaceless %}
+    <div data-form-type="collection" {{ block('widget_container_attributes') }}
+            {% if prototype is defined and allow_add %}
+              data-prototype='{{ self.collection_item(prototype, allow_delete, button_delete_label, '__name__')|e}}'
+            {%- endif -%}
+    >
+      {{ error(form.vars.errors) }}
+
+      {% if prototypes|default is iterable %}
+        {% for key, subPrototype in prototypes %}
+          <input type="hidden" data-form-prototype="{{ key }}" value="{{ self.collection_item(subPrototype, allow_delete, button_delete_label, '__name__')|e }}" />
+        {% endfor %}
+      {% endif %}
+
+      <div data-form-collection="list">
+        {% for child in form %}
+          {{ self.collection_item(child, allow_delete, button_delete_label, loop.index0) }}
+        {% endfor %}
+      </div>
+    </div>
+  {% endapply %}
+{%- endblock collection_widget %}
+
+
+{% macro collection_item(form, allow_delete, button_delete_label, index) %}
+
+  {% apply spaceless %}
+
+        <div data-form-collection="item" data-form-collection-index="{{ index }}" class="ui attached segment content draggable"  draggable="true" id={{ index }} rel="{{ index }}">
+
+          <div class="ui stackable grid">
+
+            <div class="one wide column highlight-product-form-item-drag">
+              <i class="arrows alternate icon"></i>
+            </div>
+
+            <div class="ten wide column">
+              {{ form_row(form.product) }}
+            </div>
+
+            <div class="three wide column">
+              {{ form_row(form.position, {"attr": {'class': 'highlight-product-form-item-position'}}) }}
+            </div>
+
+            {% if allow_delete %}
+              <div class="two wide column highlight-product-form-item-delete">
+                <a href="#" data-form-collection="delete" class="ui red labeled icon button mt-3">
+                  <i class="trash icon"></i>
+                  Supprimer
+                </a>
+              </div>
+            {% endif %}
+          </div>
+
+        </div>
+
+
+  {% endapply %}
+
+{% endmacro %}
+
+

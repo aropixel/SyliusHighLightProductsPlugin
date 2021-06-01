@@ -9,6 +9,8 @@ aropixel_admin_highlight:
     vars:
         all:
             subheader: aropixel.ui.highlight_products
+            templates:
+              form: "@AropixelSyliusHighLightProductsPlugin/Admin/HighLightProduct/Form/_form.html.twig"
         index:
             icon: 'file image outline'
   type: sylius.resource

@@ -123,6 +123,7 @@ class HighLight implements ResourceInterface, CodeAwareInterface, HighLightInter
     {
         if (!$this->highLightProducts->contains($highLightProduct)) {
             $this->highLightProducts[] = $highLightProduct;
+            $highLightProduct->setHighLight($this);
         }
 
         return $this;

@@ -48,3 +48,17 @@ sylius_grid:
             type: update
           delete:
             type: delete
+
+sylius_ui:
+  events:
+    sylius.admin.layout.javascripts:
+      blocks:
+        aropixel_admin_highlight_scripts:
+          template: "@AropixelSyliusHighLightProductsPlugin/Admin/_scripts.html.twig"
+          priority: 100
+
+    sylius.admin.layout.stylesheets:
+      blocks:
+        aropixel_admin_highlight_styles:
+          template: "@AropixelSyliusHighLightProductsPlugin/Admin/_styles.html.twig"
+          priority: 100

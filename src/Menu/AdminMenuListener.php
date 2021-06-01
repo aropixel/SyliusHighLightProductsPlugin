@@ -17,7 +17,7 @@ final class AdminMenuListener
         ;
 
         $pageMenu
-            ->addChild('highlight-products', ['route' => 'aropixel_admin_highlight_products_index'])
+            ->addChild('highlight-products', ['route' => 'aropixel_admin_highlight_index'])
             ->setLabelAttribute('icon', 'star')
             ->setLabel('Mises en avant produits')
         ;

@@ -3,11 +3,10 @@
 
 namespace Aropixel\SyliusHighLightProductsPlugin\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ProductInterface;
-use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 class HighLightProduct implements ResourceInterface, HighLightProductInterface
 {
@@ -19,7 +18,10 @@ class HighLightProduct implements ResourceInterface, HighLightProductInterface
     /** @var ProductInterface */
     private $product;
 
-    /** @var int */
+    /**
+     * @Gedmo\SortablePosition
+     * @var integer
+     */
     private $position;
 
 
@@ -50,7 +52,7 @@ class HighLightProduct implements ResourceInterface, HighLightProductInterface
     /**
      * @return ProductInterface
      */
-    public function getProduct(): ProductInterface
+    public function getProduct(): ?ProductInterface
     {
         return $this->product;
     }

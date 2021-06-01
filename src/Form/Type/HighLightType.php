@@ -1,20 +1,18 @@
 <?php
 
-
 namespace Aropixel\SyliusHighLightProductsPlugin\Form\Type;
 
-
-use Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProductInterface;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class HighLightType extends AbstractResourceType
 {
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
 
@@ -38,15 +36,22 @@ class HighLightType extends AbstractResourceType
                 'label' => 'sylius.ui.title'
             ])
 
-            ->add('highLightProduct', CollectionType::class, [
-                'label' => 'sylius.ui.products',
-                'class' => HighLightProductInterface::class
-            ])
 
-            ->add('products', ProductAutocompleteChoiceType::class, [
+            ->add('highLightProductsSelector', ProductAutocompleteChoiceType::class, [
                 'label' => 'sylius.ui.products',
                 'multiple' => true,
+                'mapped' => false
             ])
+
+            ->add('highLightProducts', CollectionType::class, [
+                'entry_type' => HighLightProductType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+            ])
+
+
+            // à chaque ajout dans l'autocomplete, j'ajoute en js un element du CollectionType en utilisant le prototype
 
             ->add('enabled', CheckboxType::class, [
                 'label' => 'sylius.ui.enabled'
@@ -54,9 +59,9 @@ class HighLightType extends AbstractResourceType
         ;
     }
 
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
-        return 'aropixel_highlight_products';
+        return 'aropixel_highlight';
     }
 
 }
