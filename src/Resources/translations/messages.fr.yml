@@ -1,12 +1,11 @@
 aropixel:
+  highlight_products:
+    title: Titre
+    code: Code
+    button_text: Texte du bouton de redirection
+    button_link: Lien du bouton de redirection
   ui:
-    highlight.title: Titre
-    highlight: Mise en avant de produits
-    new_highlight: Nouvelle mise en avant produits
-    edit_highlight: Modifier la mise en avant produits
-    button_text: Texte du bouton
-    button_link: Lien du bouton
-
-    highlight_products:
-      title: Titre
-      code: Code
+    highlights: Mises en avant
+    highlight_products: Mises en avant de produits
+    new_highlight: Nouvelle mise en avant
+    edit_highlight: Modifier la mise en avant
