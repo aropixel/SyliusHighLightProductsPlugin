@@ -1,0 +1,11 @@
+aropixel:
+  highlight_products:
+    title: Title
+    code: Code
+    button_text: Text button
+    button_link: Link button
+  ui:
+    highlights: Highlight
+    highlight_products: Highlight
+    new_highlight: New highlight
+    edit_highlight: Edit an highlight
