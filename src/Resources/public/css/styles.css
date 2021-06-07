@@ -32,3 +32,26 @@
 .draggable.over {
     border: 1px dashed darkgrey !important;
 }
+
+.highlight-selector-container {
+    display: flex;
+}
+
+.js-highlight-product-selector {
+    flex-grow: 1
+}
+
+.js-highlight-product-add {
+    margin-top: 26px!important;
+    margin-left: 10px!important;
+    align-self: flex-start
+}
+@media only screen and (max-width:767px) {
+    .highlight-selector-container {
+        display: block;
+    }
+    .js-highlight-product-add {
+        margin-top: 0!important;
+        margin-left: 0!important;
+    }
+}
