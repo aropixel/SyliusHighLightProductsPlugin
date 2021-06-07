@@ -23,7 +23,7 @@
             <gedmo:timestampable on="create"/>
         </field>
 
-        <one-to-many field="highLightProducts" target-entity="Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProductInterface" mapped-by="highLight">
+        <one-to-many field="highLightProducts" target-entity="Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightProductInterface" mapped-by="highLight" orphan-removal="true">
             <order-by>
                 <order-by-field name="position" />
             </order-by>

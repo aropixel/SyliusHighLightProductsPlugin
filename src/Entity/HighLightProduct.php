@@ -42,9 +42,9 @@ class HighLightProduct implements ResourceInterface, HighLightProductInterface
     }
 
     /**
-     * @param HighLightInterface $highLight
+     * @param ?HighLightInterface $highLight
      */
-    public function setHighLight(HighLightInterface $highLight): void
+    public function setHighLight(?HighLightInterface $highLight): void
     {
         $this->highLight = $highLight;
     }

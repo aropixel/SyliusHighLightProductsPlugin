@@ -25,11 +25,11 @@ class HighLightType extends AbstractResourceType
             ])
 
             ->add('buttonText', TextType::class, [
-                'label' => 'aropixel.ui.button_text'
+                'label' => 'aropixel.highlight_products.button_text'
             ])
 
             ->add('buttonLink', TextType::class, [
-                'label' => 'aropixel.ui.button_link'
+                'label' => 'aropixel.highlight_products.button_link'
             ])
 
             ->add('title', TextType::class, [

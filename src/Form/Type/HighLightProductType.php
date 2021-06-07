@@ -36,7 +36,7 @@ class HighLightProductType extends AbstractResourceType
                 'choice_label' => 'name',
                 'choice_value' => 'code',
                 'multiple' => false,
-                'disabled' => true
+//                'disabled' => true
             ])
 
             // j'ajoute le product en hidden type (par exemple juste l'id par ex)
