@@ -8,13 +8,16 @@ use Aropixel\SyliusHighLightProductsPlugin\Entity\HighLight;
 
 class HighLightIntegrityChecker implements HightLightIntegrityCheckerInterface
 {
-    public function removeDisabledProductsFromHighLight(HighLight $highLightProductsBlock): void
+    public function removeDisabledProductsFromHighLight(?HighLight $highLightProductsBlock): void
     {
-        foreach ($highLightProductsBlock->getHighLightProducts() as $highLightProduct) {
-            if (!$highLightProduct->getProduct()->isEnabled()) {
-                $highLightProductsBlock->removeHighLightProduct($highLightProduct);
+        if ($highLightProductsBlock) {
+            foreach ($highLightProductsBlock->getHighLightProducts() as $highLightProduct) {
+                if (!$highLightProduct->getProduct()->isEnabled()) {
+                    $highLightProductsBlock->removeHighLightProduct($highLightProduct);
+                }
             }
         }
+
     }
 
     public function removeDisabledProductsFromHighLights(array $highLightProductsBlocks): void
