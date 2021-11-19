@@ -9,16 +9,24 @@
     {{ form_row(form.buttonText) }}
     {{ form_row(form.buttonLink) }}
 
-    <div class="column js-highlight-product-selector field">
-        {{ form_row(form.highLightProductsSelector, {
-            'remote_url': path('sylius_admin_ajax_product_by_name_phrase'),
-            'load_edit_url': path('sylius_admin_ajax_product_by_code')
-        }) }}
-    </div>
+    <div class="field">
 
-    <button class="ui labeled icon button js-highlight-product-add field">
-        <i class="plus square outline icon"></i>Ajouter les produits
-    </button>
+        <div class="highlight-selector-container">
+
+            <div class="column js-highlight-product-selector field">
+                {{ form_row(form.highLightProductsSelector, {
+                    'remote_url': path('sylius_admin_ajax_product_by_name_phrase'),
+                    'load_edit_url': path('sylius_admin_ajax_product_by_code')
+                }) }}
+            </div>
+
+            <button class="ui labeled icon button js-highlight-product-add field">
+                <i class="plus square outline icon"></i>Ajouter les produits
+            </button>
+
+        </div>
+
+    </div>
 
     {{ form_widget(form.highLightProducts, {'attr': {'class': 'js-highlight-product-collection highlight-product-collection'}}) }}
 

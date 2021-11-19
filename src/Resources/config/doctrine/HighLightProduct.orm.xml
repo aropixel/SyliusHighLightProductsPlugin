@@ -9,7 +9,7 @@
             <generator strategy="AUTO" />
         </id>
 
-        <many-to-one field="highLight" target-entity="Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightInterface">
+        <many-to-one field="highLight" target-entity="Aropixel\SyliusHighLightProductsPlugin\Entity\HighLightInterface" inversed-by="highLightProducts">
             <join-column name="highlight_id" referenced-column-name="id" nullable="true" />
         </many-to-one>
 

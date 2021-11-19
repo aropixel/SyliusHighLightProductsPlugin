@@ -132,6 +132,7 @@ class HighLight implements ResourceInterface, CodeAwareInterface, HighLightInter
     public function removeHighLightProduct(HighLightProduct $highLightProduct): self
     {
         $this->highLightProducts->removeElement($highLightProduct);
+        $highLightProduct->setHighLight(null);
 
         return $this;
     }

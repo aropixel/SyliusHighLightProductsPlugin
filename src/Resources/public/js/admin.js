@@ -1,25 +1,41 @@
 const addProductsToHighlight = () => {
+
+    // Get the collection
     const collection = document.querySelector('.js-highlight-product-collection');
+
+    // Get the collection
+    const collectionList = document.querySelector('.js-highlight-product-collection [data-form-collection="list"]');
+
+    // Get the products to add
     const selectedProducts = document.querySelectorAll('.js-highlight-product-selector a.visible');
 
+    // Get the prototype of a new line
+    const prototype = collection.getAttribute('data-prototype');
+
+    // Get the prototype of a new line
+    const indexInit = document.querySelectorAll('.js-highlight-product-collection [data-form-collection="item"]').length;
+
     selectedProducts.forEach((selectedProduct, index) => {
-        const prototype = collection.getAttribute('data-prototype');
+
+        // Get the produt's code
         const selectProductCode = selectedProduct.getAttribute('data-value');
 
-        const position = index + 1;
+        // Guess new position
+        const position = indexInit + index;
 
+        // Set position in the aropixel_highlight[highLightProducts] array
         let selectedProductPrototype = prototype.replace(/__name__/g, position);
         selectedProductPrototype = selectedProductPrototype.replace(`<option value="${selectProductCode}">`, `<option selected="selected" value="${selectProductCode}">`);
 
-        collection.innerHTML += selectedProductPrototype;
+        // Add the line to the collection
+        collectionList.innerHTML += selectedProductPrototype;
     });
 
-    const collectionElements = document.querySelectorAll('.draggable');
 
-    collectionElements.forEach((element) => {
-        const parent = element.parentNode;
-        const positionElement = Array.prototype.indexOf.call(parent.children, element);
-        element.querySelector('.highlight-product-form-item-position').value = positionElement;
+    // Update position field
+    const collectionElements = document.querySelectorAll('.draggable');
+    collectionElements.forEach((element, index) => {
+        element.querySelector('.highlight-product-form-item-position').value = index + 1;
     });
 
     initDragHighlightProduct();
@@ -70,8 +86,8 @@ const handleDragDrop = (dragEl, e) => {
     const dragElPos = Array.prototype.indexOf.call(parent.children, dragEl);
     const elementDraggedPos = Array.prototype.indexOf.call(parent.children, elementDragged);
 
-    dragEl.querySelector('.highlight-product-form-item-position').value = dragElPos;
-    elementDragged.querySelector('.highlight-product-form-item-position').value = elementDraggedPos;
+    dragEl.querySelector('.highlight-product-form-item-position').value = dragElPos + 1;
+    elementDragged.querySelector('.highlight-product-form-item-position').value = elementDraggedPos + 1;
 };
 
 const handleDragEnd = (dragEl, draggableElements) => {
