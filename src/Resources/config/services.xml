@@ -29,9 +29,13 @@
             </call>
             <tag name="container.service_subscriber"/>
             <argument type="service" id="aropixel_sylius_high_light_products_plugin.repository.high_light_products" />
+            <argument type="service" id="aropixel_sylius_high_light_products_plugin.high_light_integrity_checker" />
         </service>
 
         <service id="aropixel_sylius_high_light_products_plugin.controller.high_light_products" public="true" alias="Aropixel\SyliusHighLightProductsPlugin\Controller\HighLightProductsController" />
+
+        <service id="aropixel_sylius_high_light_products_plugin.high_light_integrity_checker" public="true" class="Aropixel\SyliusHighLightProductsPlugin\HighLightIntegrity\HighLightIntegrityChecker" />
+
 
 
 
